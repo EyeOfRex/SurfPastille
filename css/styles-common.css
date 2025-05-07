@@ -1,0 +1,261 @@
+/* ================ VARIABLES ================ */
+:root {
+    /* Couleurs */
+    --sable: #E6D7B8;
+    --sable-clair: #F3ECDF;
+    --bleu: #2A5F8A;
+    --bleu-fonce: #1E4A6E;
+    --bleu-clair: #3A7BB5;
+    --blanc: #F9F5F0;
+    --texte: #333;
+    --texte-clair: #666;
+    --accent: #E6A336;
+    
+    /* Transitions */
+    --transition: all 0.3s ease;
+    
+    /* Ombres */
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ================ BASE ================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--texte);
+    line-height: 1.6;
+    background: linear-gradient(180deg, var(--blanc) 0%, var(--sable-clair) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================ LAYOUT ================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+/* Dégradé entre les sections */
+section::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--blanc));
+    z-index: 1;
+}
+
+/* ================ HEADER ================ */
+.header {
+    background-color: var(--sable);
+    padding: 1.8rem 3rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    color: var(--bleu);
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+    margin-right: 3rem;
+}
+
+.nav {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav a {
+    color: var(--bleu);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    display: inline-block;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+/* Header au scroll */
+.header.scrolled {
+    padding: 1.2rem 3rem;
+    background-color: rgba(54, 113, 161, 0.98);
+}
+
+/* Cible à la fois les liens de navigation ET le logo */
+.header.scrolled .nav a,
+.header.scrolled .logo {
+    color: var(--sable);
+}
+
+/* ================ BOUTONS ================ */
+.btn {
+    padding: 0.9rem 2.3rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--bleu);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--bleu-fonce);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.btn-social {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-social.google {
+    background: #dbbe1a;
+    color: white;
+}
+
+.btn-social.facebook {
+    background: #1877F2;
+    color: white;
+}
+
+.btn-social.x {
+    background: #000;
+    color: white;
+}
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ================ FOOTER ================ */
+.footer {
+    background-color: var(--bleu);
+    color: white;
+    padding: 2.5rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ================ ANIMATIONS ================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ================ RESPONSIVE COMMUN ================ */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1.2rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav {
+        gap: 1rem;
+    }
+    
+    .nav a {
+        font-size: 1rem;
+    }
+}

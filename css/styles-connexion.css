@@ -1,0 +1,175 @@
+/* ================ IMPORT COMMUN ================ */
+@import url('styles-common.css');
+
+/* ================ AUTHENTIFICATION ================ */
+.auth-container {
+    max-width: 500px;
+    margin: 8rem auto 4rem;
+    padding: 2rem;
+    background: rgb(236, 232, 232);
+    border-radius: 15px;
+    box-shadow: var(--shadow-hover);
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--sable-clair);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--texte-clair);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.auth-tab.active {
+    color: var(--bleu);
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+}
+
+.auth-form {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--bleu);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--sable);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(230, 163, 54, 0.2);
+}
+
+.forgot-password {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--bleu);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.password-hint {
+    color: var(--texte-clair);
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox input {
+    width: auto;
+}
+
+.checkbox label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    color: var(--texte-clair);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--sable);
+}
+
+.auth-divider::before {
+    margin-right: 1rem;
+}
+
+.auth-divider::after {
+    margin-left: 1rem;
+}
+
+.social-auth {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: center;
+}
+
+/* ================ RESPONSIVE CONNEXION ================ */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 6rem 1rem 3rem;
+        padding: 1.5rem;
+    }
+    
+    .social-auth {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-tabs {
+        flex-direction: column;
+    }
+    
+    .auth-tab {
+        text-align: center;
+        border-bottom: 2px solid var(--sable-clair);
+    }
+    
+    .auth-tab.active::after {
+        display: none;
+    }
+}

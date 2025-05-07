@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeaYou - Connexion</title>
+    <link rel="stylesheet" href="css/styles-common.css">
+    <link rel="stylesheet" href="css/styles-connexion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (identique aux autres pages) -->
+    <header class="header">
+        <div class="logo">SeaYou</div>
+        <nav class="nav">
+            <a href="home.html">Accueil</a>
+            <a href="produit.html">Produit</a>
+            <a href="#">Précommande</a>
+            <a href="connexion.html" class="active">Connexion</a>
+        </nav>
+    </header>
+
+    <main class="auth-container">
+        <!-- Container avec onglets -->
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Connexion</button>
+            <button class="auth-tab" data-tab="register">Inscription</button>
+        </div>
+
+        <!-- Formulaire de Connexion -->
+        <form class="auth-form active" id="login-form">
+            <h2>Connectez-vous</h2>
+            
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" required placeholder="votre@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="login-password">Mot de passe</label>
+                <input type="password" id="login-password" required placeholder="••••••••">
+                <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+            </div>
+            
+            <div class="form-submit">
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </div>
+            
+            <div class="auth-divider">
+                <span>ou continuer avec</span>
+            </div>
+            
+            <div class="social-auth">
+                <button type="button" class="btn-social google">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                <button type="button" class="btn-social facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+                <button type="button" class="btn-social x">
+                    <i class="fab fa-x-twitter"></i> X
+                </button>
+            </div>
+        </form>
+
+        <!-- Formulaire d'Inscription -->
+        <form class="auth-form" id="register-form">
+            <h2>Créez votre compte</h2>
+            
+            <div class="form-group">
+                <label for="register-name">Nom complet</label>
+                <input type="text" id="register-name" required placeholder="Jean Dupont">
+            </div>
+            
+            <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" required placeholder="votre@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="register-password">Mot de passe</label>
+                <input type="password" id="register-password" required placeholder="••••••••">
+                <small class="password-hint">Minimum 8 caractères</small>
+            </div>
+            
+            <div class="form-group checkbox">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">J'accepte les <a href="#">conditions d'utilisation</a></label>
+            </div>
+            
+            <div class="form-submit">
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </div>
+            
+            <div class="auth-divider">
+                <span>ou s'inscrire avec</span>
+            </div>
+            
+            <div class="social-auth">
+                <button type="button" class="btn-social google">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                <button type="button" class="btn-social facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+                <button type="button" class="btn-social x">
+                    <i class="fab fa-x-twitter"></i> X
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Gestion des onglets
+        const tabs = document.querySelectorAll('.auth-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                document.querySelectorAll('.auth-form').forEach(form => {
+                    form.classList.remove('active');
+                });
+                document.getElementById(`${tab.dataset.tab}-form`).classList.add('active');
+            });
+        });
+
+        // Simulation de connexion (à remplacer par du vrai code)
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Connexion simulée - À implémenter avec votre backend');
+        });
+
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Inscription simulée - À implémenter avec votre backend');
+        });
+    </script>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 SeaYou created by <a href="https://eyeofrex.infos.st/" target="_blank">eye_of_rex</a>. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
